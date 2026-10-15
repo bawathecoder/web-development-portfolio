@@ -1,2 +1,64 @@
-<h1>My Portfolio</h1>
-<a href="./todo/">Open To-Do App</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List - InternCircle</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f0f2f5;display:flex;justify-content:center;padding:20px}
+.container{background:#fff;width:100%;max-width:500px;padding:25px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+h1{text-align:center;margin-bottom:20px;color:#222}
+.input-box{display:flex;gap:10px;margin-bottom:20px}
+.input-box input{flex:1;padding:12px;border:2px solid #ddd;border-radius:8px;font-size:16px}
+.input-box button{padding:12px 20px;background:#4f46e5;color:#fff;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+.input-box button:hover{background:#4338ca}
+ul{list-style:none}
+li{background:#f9f9f9;padding:12px 15px;margin-bottom:10px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+li.completed{opacity:0.6;text-decoration:line-through}
+li span{cursor:pointer;flex:1}
+.actions{display:flex;gap:8px}
+.actions button{border:none;padding:6px 10px;border-radius:6px;cursor:pointer;color:#fff}
+.done{background:#22c55e}
+.del{background:#ef4444}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>My To-Do List</h1>
+<div class="input-box">
+<input type="text" id="taskInput" placeholder="Add a new task...">
+<button onclick="addTask()">Add</button>
+</div>
+<ul id="taskList"></ul>
+</div>
+<script>
+const input = document.getElementById('taskInput');
+const list = document.getElementById('taskList');
+let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+
+function render(){
+list.innerHTML='';
+tasks.forEach((t,i)=>{
+const li=document.createElement('li');
+if(t.done) li.classList.add('completed');
+li.innerHTML=`<span onclick="toggle(${i})">${t.text}</span><div class="actions"><button class="done" onclick="toggle(${i})">✓</button><button class="del" onclick="removeTask(${i})">X</button></div>`;
+list.appendChild(li);
+});
+localStorage.setItem('tasks',JSON.stringify(tasks));
+}
+
+function addTask(){
+const text=input.value.trim();
+if(!text) return;
+tasks.push({text,done:false});
+input.value='';
+render();
+}
+function toggle(i){tasks[i].done=!tasks[i].done;render();}
+function removeTask(i){tasks.splice(i,1);render();}
+input.addEventListener('keypress',e=>{if(e.key==='Enter') addTask();});
+render();
+</script>
+</body>
+</html>
