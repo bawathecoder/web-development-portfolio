@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Pricing Cards</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h1>Choose Your Plan</h1>
+<p class="subtitle">Simple pricing that grows with you</p>
+<div class="toggle-wrap">
+<span class="label monthly active">Monthly</span>
+<div class="toggle" id="billingToggle"><div class="toggle-circle"></div></div>
+<span class="label yearly">Yearly <span class="save">Save 20%</span></span>
+</div>
+<div class="cards">
+<div class="card"><h3>Starter</h3><p class="desc">For individuals</p><div class="price">$<span class="amount" data-monthly="19" data-yearly="15">19</span>/mo</div><ul><li>✓ 5 Projects</li><li>✓ 10GB Storage</li><li>✓ Basic Support</li></ul><button class="btn outline">Get Started</button></div>
+<div class="card popular"><div class="ribbon">Popular</div><h3>Professional</h3><p class="desc">For teams</p><div class="price">$<span class="amount" data-monthly="49" data-yearly="39">49</span>/mo</div><ul><li>✓ 50 Projects</li><li>✓ 100GB Storage</li><li>✓ Priority Support</li><li>✓ Analytics</li></ul><button class="btn primary">Get Started</button></div>
+<div class="card"><div class="ribbon green">Best Value</div><h3>Enterprise</h3><p class="desc">For companies</p><div class="price">$<span class="amount" data-monthly="99" data-yearly="79">99</span>/mo</div><ul><li>✓ Unlimited</li><li>✓ 1TB Storage</li><li>✓ 24/7 Support</li><li>✓ SLA</li></ul><button class="btn outline">Get Started</button></div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
