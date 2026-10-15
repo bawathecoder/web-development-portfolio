@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Weather Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h1>🌤️ Live Weather Dashboard</h1>
+  <div class="search-box">
+    <input type="text" id="cityInput" placeholder="Enter city name (e.g. Bareilly, Delhi, London)">
+    <button id="searchBtn">Search</button>
+  </div>
+  <p id="errorMsg" class="error"></p>
+  <div id="loader" class="loader hidden"></div>
+
+  <div id="weatherCard" class="card hidden">
+    <div class="current">
+      <h2 id="cityName"></h2>
+      <img id="weatherIcon" src="" alt="">
+      <h3 id="temp"></h3>
+      <p id="desc"></p>
+      <div class="details">
+        <span id="humidity"></span>
+        <span id="wind"></span>
+      </div>
+    </div>
+    <h3 class="forecast-title">5-Day Forecast</h3>
+    <div id="forecast" class="forecast"></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
